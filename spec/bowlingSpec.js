@@ -9,20 +9,11 @@ describe('10 Pin Bowling', function() {
     expect(frame.number).toEqual(1);
   });
 
-  it('in a frame you can throw twice', function() {
-    expect(frame.bowl(player)).toEqual(player);
-  });
+  it('in a frame you have 2 bowls', function() {
+    player.bowl(frame)
+    expect(frame.ball_1).toEqual(false)
+  })
 
-  it('tracks your thows', function() {
-    frame.bowl(player)
-    expect(player.ballNumber).toEqual(1)
-  });
-
-  it('knows your goes for that frame are up', function() {
-    frame.bowl(player)
-    frame.bowl(player)
-    expect(player.ballNumber).toEqual(2)
-  });
 
 });
 
