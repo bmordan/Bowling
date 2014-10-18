@@ -9,9 +9,10 @@ Player.prototype = {
   get current()     { return this._frames.length-1; }
 };
 
-Player.prototype.pinsDown = function(n) {
+Player.prototype.pinsDown = function(pinsDowned) {
   var frame = this._frameManager()
-  frame.pinsDown(n)
+  frame.pinsDown(pinsDowned)
+  return this._addToScore(frame)
 };
 
 Player.prototype.currentFrameTotal = function() {
@@ -19,9 +20,17 @@ Player.prototype.currentFrameTotal = function() {
   return frame._calculateFrame()
 };
 
-// PRIVATE FUNCTIONS
+//////////// PRIVATE FUNCTIONS //////////////
 
-Player.prototype._frame
+Player.prototype._addToScore = function(frame) {
+  var score = this.score
+  if(frame.ball_2){
+    this._score = score + frame._calculateFrame()
+    return this.score
+  }else{
+    return this.score + frame.open_1
+  }
+};
 
 Player.prototype._frameManager = function(){
   var frame = this._frames[this.current]

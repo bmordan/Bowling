@@ -26,5 +26,15 @@ describe('Player your score works like this', function() {
     expect(player.frameNumber).toEqual(2);
   });
 
+  it('after a throw your score is returned', function() {
+    expect(player.pinsDown(1)).toEqual(1)
+  });
+
+  it('your score will be your running total', function() {
+    player.pinsDown(4)
+    player.pinsDown(4)
+    expect(player.score).toEqual(8)
+  })
+
 
 });
