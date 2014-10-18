@@ -20,7 +20,7 @@ Frame.prototype.pinsDown = function(pinsDowned) {
   }
 };
 Frame.prototype._calculateFrame = function() {
-  var total = this.open_1 + this.open_2
-  console.log([total,this.ball_2])
-  if(total === 10 && this.ball_2) this.spare = true; 
+  var total = this.open_1 + this.open_2;
+  if(total === 10 && this.ball_2) this.spare = true;
+  return total; 
 };

@@ -5,12 +5,12 @@ describe('10 Pin Bowling', function() {
     player = new Player;
   });
 
-  it('in a frame you have 2 bowls', function() {
+  xit('in a frame you have 2 bowls', function() {
     player.pinsDown(2)
     expect(frame.ball_1).toEqual(true)
   });
 
-  it('then the frame is over',function() {
+  xit('then the frame is over',function() {
     player.pinsDown(2)
     player.pinsDown(2)
     expect(frame.ball_2).toEqual(true)
