@@ -5,7 +5,12 @@ describe('Player your score works like this', function() {
   });
 
   it('even if you are Jesus you start with 0', function() {
-    expect(player.getScore()).toEqual(0);
+    expect(player.score).toEqual(0);
+  });
+
+  it('your first throw is the first ball of frame 1', function() {
+    player.pinsDown(1)
+    expect(player.frameNumber).toEqual(1)
   });
 
 

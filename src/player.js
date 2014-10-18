@@ -1,15 +1,26 @@
 function Player() {
-  this.game       = []
-  this.score      = 0
+  this._frames      = []
+  this._score       = 0
 };
-Player.prototype.getScore = function() {
-  return this.score; 
+
+Player.prototype = {
+  get score()       { return this._score;         },
+  get frameNumber() { return this._frames.length; },
 };
-Player.prototype.addToScore = function(n) {
-  this.score = this.getScore() + n
-  return this.getScore
+
+Player.prototype.pinsDown = function(n) {
+  this._frameManager(n)
 };
-Player.prototype.bowl = function(frame) {
-  frame.ball_1 = !frame.ball_1
-  if(!frame.ball_1) frame.ball_2 = !frame.ball_2
+
+// PRIVATE FUNCTIONS
+
+Player.prototype._frameManager = function(n){
+  if (this.frameNumber === 0) {
+    this._addNextFrame()
+  }
+  return this.frameNumber
+};
+
+Player.prototype._addNextFrame = function() {
+  this._frames.push(new Frame)
 };

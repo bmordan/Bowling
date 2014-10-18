@@ -1,5 +1,4 @@
-function Frame(n) {
-  this.number = n;
+function Frame() {
   this.ball_1 = false;
   this.ball_2 = false;
   this.open_1 = 0;
@@ -11,7 +10,7 @@ Frame.prototype._strike = function() {
   this.ball_2 = false;
   this.strike = true;
 };
-Frame.prototype.pinsDowned = function(pinsDowned) {
+Frame.prototype.pinsDown = function(pinsDowned) {
   if(this.ball_1) {
     this.open_2 = pinsDowned;
     this.ball_2 = true;
@@ -22,5 +21,6 @@ Frame.prototype.pinsDowned = function(pinsDowned) {
 };
 Frame.prototype._calculateFrame = function() {
   var total = this.open_1 + this.open_2
+  console.log([total,this.ball_2])
   if(total === 10 && this.ball_2) this.spare = true; 
 };
