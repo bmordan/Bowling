@@ -11,13 +11,13 @@ describe('10 Pin Bowling', function() {
 
   it('in a frame you have 2 bowls', function() {
     player.bowl(frame)
-    expect(frame.ball_1).toEqual(false)
+    expect(frame.ball_1).toEqual(true)
   });
 
   it('then the frame is over',function() {
     player.bowl(frame)
     player.bowl(frame)
-    expect(frame.ball_2).toEqual(false)
+    expect(frame.ball_2).toEqual(true)
   });
 
   it('if you strike your frame is over', function() {
@@ -31,23 +31,16 @@ describe('10 Pin Bowling', function() {
     expect(frame.open_1).toEqual(8)
   });
 
-  it('knows when you have a spare', function() {
+  it('so both your goes count toward your frame score', function() {
+    frame.pinsDowned(3)
+    frame.pinsDowned(4)
+    expect(frame.open_2).toEqual(4)
+  });
+
+  xit('when you have a spare', function() {
     frame.pinsDowned(3)
     frame.pinsDowned(7)
     expect(frame.spare).toEqual(true)
-  })
-
-
-});
-
-describe('Your score works like this', function() {
-
-  beforeEach(function(){
-    player = new Player;
-  });
-
-  it('even if you are Jesus you start with 0', function() {
-    expect(player.getScore()).toEqual(0);
   });
 
 
