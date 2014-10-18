@@ -21,11 +21,13 @@ Player.prototype.currentFrameTotal = function() {
 };
 
 Player.prototype._calculateScore = function() {
-  var score = 0, spareBonus = 0
+  var score = 0, spareBonus = 0, strikeBonus = 0
   for(i=this.current;i>-1;i-=1){
-    if(this._frames[i].spare) score += spareBonus
+    if(this._frames[i].spare ) score +=  spareBonus
+    if(this._frames[i].strike) score += strikeBonus
     score += this._frames[i]._calculateFrame()
-    var spareBonus = this._frames[i].open_1
+    var spareBonus  = this._frames[i].open_1
+    var strikeBonus = this._frames[i].open_1 + this._frames[i].open_2
   }
   return this._score = score
 };

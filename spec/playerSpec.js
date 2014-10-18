@@ -50,5 +50,17 @@ describe('Player your score works like this', function() {
     expect(player.score).toEqual(25)
   });
 
+  it('if you get a strike. Good job! double bonus', function() {
+    player.pinsDown(10)
+    expect(player._frames[0].strike).toEqual(true)
+  });
+
+  it('strikes are calculated with a double bonus', function() {
+    player.pinsDown(10)
+    player.pinsDown(5)
+    player.pinsDown(4)
+    expect(player.score).toEqual(28)
+  });
+
 
 });

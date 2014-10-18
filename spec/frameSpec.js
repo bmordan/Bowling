@@ -19,7 +19,7 @@ describe('10 Pin Bowling', function() {
   it('if you strike your frame is over', function() {
     frame._strike()
     expect(frame.strike).toBe(true)
-    expect(frame.ball_2).toBe(false)
+    expect(frame.ball_2).toBe(true)
   });
 
   it('the frame logs the pins you down on each go', function() {
