@@ -34,7 +34,13 @@ describe('Player your score works like this', function() {
     player.pinsDown(4)
     player.pinsDown(4)
     expect(player.score).toEqual(8)
-  })
+  });
+
+  it('if you get a spare your score is suspended until your next throw', function() {
+    player.pinsDown(5)
+    player.pinsDown(5)
+    expect(player.score).toEqual(10)  
+  });
 
 
 });

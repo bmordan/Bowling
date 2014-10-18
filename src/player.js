@@ -1,6 +1,6 @@
 function Player() {
-  this._frames      = []
-  this._score       = 0
+  this._frames = []
+  this._score  = 0
 };
 
 Player.prototype = {
@@ -12,7 +12,7 @@ Player.prototype = {
 Player.prototype.pinsDown = function(pinsDowned) {
   var frame = this._frameManager()
   frame.pinsDown(pinsDowned)
-  return this._addToScore(frame)
+  return this._calculateScore()
 };
 
 Player.prototype.currentFrameTotal = function() {
@@ -20,16 +20,13 @@ Player.prototype.currentFrameTotal = function() {
   return frame._calculateFrame()
 };
 
-//////////// PRIVATE FUNCTIONS //////////////
-
-Player.prototype._addToScore = function(frame) {
-  var score = this.score
-  if(frame.ball_2){
-    this._score = score + frame._calculateFrame()
-    return this.score
-  }else{
-    return this.score + frame.open_1
+Player.prototype._calculateScore = function() {
+  var score = 0
+  for(i=0;i<this.frameNumber;i+=1) {
+    score = score + this._frames[i]._calculateFrame()
   }
+  this._score = score
+  return this.score
 };
 
 Player.prototype._frameManager = function(){
