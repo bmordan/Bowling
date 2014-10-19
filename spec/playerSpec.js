@@ -36,10 +36,15 @@ describe('Player your score works like this', function() {
     expect(player.score).toEqual(8)
   });
 
-  it('if you get a spare your frame logs it', function() {
-    player.pinsDown(5)
-    player.pinsDown(5)
-    expect(player._frames[0].spare).toEqual(true)  
+
+
+});
+
+describe('Scoring works like this', function() {
+
+  beforeEach(function(){
+    player = new Player;
+    frame = new Frame;
   });
 
   it('if you get a spare your next throw adds a bonus', function() {
@@ -62,5 +67,103 @@ describe('Player your score works like this', function() {
     expect(player.score).toEqual(28)
   });
 
+  it('2 strikes in a row is called a "Double"', function() {
+    player.pinsDown(10)
+    player.pinsDown(10)
+    expect(player.score).toEqual(30)
+  });
 
+  it('3 strikes in a row is called a "Turkey"', function() {
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    expect(player.score).toEqual(60)
+  });
+
+  it('a gutter game scores 0', function() {
+    gutterGame()
+    expect(player.score).toEqual(0)
+  });
+
+  it('a perfect game scores 300 (and you get a special ring)',function() {
+    perfectGame()
+    expect(player.score).toEqual(300)
+  });
+
+  xit('a typical game might scores 90',function() {
+    typicalGame()
+    expect(player.score).toEqual(90)
+  });
+
+  function perfectGame() {
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    player.pinsDown(10)
+    //should come to 300    
+  }
+
+  function gutterGame() {
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    player.pinsDown(0)
+    //should come to 0    
+  }
+
+  function typicalGame() {
+    player.pinsDown(4)
+    player.pinsDown(3)
+
+    player.pinsDown(6)
+    player.pinsDown(3)
+
+    player.pinsDown(10) //a strike
+
+    player.pinsDown(4)
+    player.pinsDown(0)
+
+    player.pinsDown(4)
+    player.pinsDown(6) //a spare
+
+    player.pinsDown(7)
+    player.pinsDown(3) //a spare
+
+    player.pinsDown(2)
+    player.pinsDown(3)
+
+    player.pinsDown(1)
+    player.pinsDown(8)
+
+    player.pinsDown(2)
+    player.pinsDown(3)
+
+    player.pinsDown(5)
+    player.pinsDown(3)
+    // should come to 90
+  }
 });

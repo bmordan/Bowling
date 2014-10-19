@@ -1,4 +1,4 @@
-describe('10 Pin Bowling', function() {
+describe('The game is made of 10 Frames', function() {
 
   beforeEach(function() {
     frame = new Frame;
@@ -40,5 +40,10 @@ describe('10 Pin Bowling', function() {
     expect(frame.spare).toBe(true)
   });
 
+  it('your frame logs it', function() {
+    player.pinsDown(5)
+    player.pinsDown(5)
+    expect(player._frames[0].spare).toEqual(true)  
+  });  
 
 });
