@@ -5,6 +5,7 @@ function Frame() {
   this.open_2 = 0;
   this.strike = false;
   this.spare  = false;
+  this.bonus  = 0;
 };
 
 Frame.prototype.pinsDown = function(pinsDowned) {
@@ -18,7 +19,7 @@ Frame.prototype.pinsDown = function(pinsDowned) {
 };
 
 Frame.prototype._calculateFrame = function() {
-  var total = this.open_1 + this.open_2;
+  var total = this.open_1 + this.open_2 + this.bonus;
   if(total === 10 && this.ball_2) this.spare = true;
   if(this.open_1 === 10) this._strike();
   return total; 

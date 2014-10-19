@@ -85,12 +85,12 @@ describe('Scoring works like this', function() {
     expect(player.score).toEqual(0)
   });
 
-  it('a perfect game scores 300 (and you get a special ring)',function() {
+  it('a perfect game scores 300',function() {
     perfectGame()
     expect(player.score).toEqual(300)
   });
 
-  xit('a typical game might scores 90',function() {
+  it('a typical game might scores 90',function() {
     typicalGame()
     expect(player.score).toEqual(90)
   });
@@ -138,30 +138,21 @@ describe('Scoring works like this', function() {
   function typicalGame() {
     player.pinsDown(4)
     player.pinsDown(3)
-
     player.pinsDown(6)
     player.pinsDown(3)
-
     player.pinsDown(10) //a strike
-
     player.pinsDown(4)
     player.pinsDown(0)
-
     player.pinsDown(4)
     player.pinsDown(6) //a spare
-
     player.pinsDown(7)
     player.pinsDown(3) //a spare
-
     player.pinsDown(2)
     player.pinsDown(3)
-
     player.pinsDown(1)
     player.pinsDown(8)
-
     player.pinsDown(2)
     player.pinsDown(3)
-
     player.pinsDown(5)
     player.pinsDown(3)
     // should come to 90
